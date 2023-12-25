@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\AuthenticateException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,5 +18,6 @@ class LoginController extends Controller
                 'token' => $token
             ]);
         }
+        throw new AuthenticateException;
     }
 }
