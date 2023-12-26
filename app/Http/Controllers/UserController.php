@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
     public function index(IndexRequest $request)
     {
         return UserResource::collection(User::all());
