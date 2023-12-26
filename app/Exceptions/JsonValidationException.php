@@ -21,7 +21,7 @@ class JsonValidationException extends Exception
     public function render($request)
     {
         return response()->json([
-            'message' => 'Validation erro',
+            'message' => 'Validation error',
             'errors' => $this->validator->errors()
         ], 422);
     }
