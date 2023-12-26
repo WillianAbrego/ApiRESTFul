@@ -23,8 +23,6 @@ class IndexRequest extends BaseFormRequest
      */
     public function rules()
     {
-        return [
-            'foo' => 'required',
-        ];
+        return [];
     }
 }
