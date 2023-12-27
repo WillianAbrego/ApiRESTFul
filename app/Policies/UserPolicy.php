@@ -23,4 +23,8 @@ class UserPolicy
     {
         return true;
     }
+    public function view(User $user, User $model)
+    {
+        return true;
+    }
 }

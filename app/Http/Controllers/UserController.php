@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\CreateRequest;
 use App\Http\Requests\User\IndexRequest;
+use App\Http\Requests\User\ShowRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,6 +27,11 @@ class UserController extends Controller
 
         $user = $user->createModel($request);
 
+        return new UserResource($user);
+    }
+    public function show(ShowRequest $request)
+    {
+        $user = User::findOrFail($request->user_id);
         return new UserResource($user);
     }
 }
