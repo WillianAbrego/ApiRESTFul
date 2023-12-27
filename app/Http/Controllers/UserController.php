@@ -22,8 +22,10 @@ class UserController extends Controller
 
     public function create(CreateRequest $request)
     {
-        return response()->json([
-            'success' => true
-        ]);
+        $user = new User;
+
+        $user = $user->createModel($request);
+
+        return new UserResource($user);
     }
 }

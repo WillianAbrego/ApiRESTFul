@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /* Storage */
+
+    public function createModel($request)
+    {
+        $user = $this->create($request->only(['name', 'email', 'password']));
+
+        return $user;
+    }
 }
