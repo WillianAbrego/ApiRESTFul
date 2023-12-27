@@ -22,5 +22,8 @@ class UserController extends Controller
 
     public function create(CreateRequest $request)
     {
+        return response()->json([
+            'success' => true
+        ]);
     }
 }
