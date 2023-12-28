@@ -59,4 +59,25 @@ class UserEndpointsTest extends TestCase
             'updated_at',
         ]);
     }
+    public function test_user_update_endpoint()
+    {
+        $user = User::first();
+        $headers = [
+            'Authorization' => config('test.token')
+
+        ];
+        $payload = [
+            'user_id' => $user->id,
+            'name' => $this->faker->name(),
+            'email' => $user->email
+        ];
+        $this->json('PUT', '/api/user/update', $payload, $headers)->assertStatus(200)->assertJsonStructure([
+            'id',
+            'name',
+            'email',
+            'email_verified_at',
+            'created_at',
+            'updated_at',
+        ]);
+    }
 }

@@ -40,7 +40,7 @@ class UserController extends Controller
     public function update(UpdateRequest $request)
     {
         $user = User::findOrFail($request->user_id);
-        $user = $user->git($request);
+        $user = $user->updateModel($request);
         return new UserResource($user);
     }
 }
