@@ -28,3 +28,5 @@ Route::get('user/index', [UserController::class, 'index']);
 Route::post('user/create', [UserController::class, 'create']);
 
 Route::post('user/show', [UserController::class, 'show']);
+
+Route::put('user/update', [UserController::class, 'update']);

@@ -27,4 +27,8 @@ class UserPolicy
     {
         return true;
     }
+    public function update(User $user, User $model)
+    {
+        return true;
+    }
 }
