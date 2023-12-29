@@ -25,21 +25,21 @@ class UserEndpointsTest extends TestCase
         $this->json('GET', '/api/user/index', $payload, $headers)->assertStatus(200);
     }
 
-    // public function test_user_create_endpoint()
-    // {
-    //     $headers = [
-    //         'Authorization' => config('test.token')
+    public function test_user_create_endpoint()
+    {
+        $headers = [
+            'Authorization' => config('test.token')
 
-    //     ];
-    //     $payload = [
-    //         'name' => fake()->name(),
-    //         'email' => fake()->unique()->safeEmail(),
-    //         'password' => 'password',
-    //         'password_confirmation' => 'password',
+        ];
+        $payload = [
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'password' => 'password',
+            'password_confirmation' => 'password',
 
-    //     ];
-    //     $this->json('POST', '/api/user/create', $payload, $headers)->assertStatus(201);
-    // }
+        ];
+        $this->json('POST', '/api/user/create', $payload, $headers)->assertStatus(201);
+    }
     public function test_user_show_endpoint()
     {
         $user = User::first();
@@ -78,6 +78,29 @@ class UserEndpointsTest extends TestCase
             'email_verified_at',
             'created_at',
             'updated_at',
+        ]);
+    }
+
+    public function test_user_delete_endpoint()
+    {
+        $user = User::latest()->first();
+        $headers = [
+            'Authorization' => config('test.token')
+
+        ];
+        $payload = [
+            'user_id' => $user->id
+        ];
+        $this->json('Delete', '/api/user/delete', $payload, $headers)->assertStatus(200)->assertJsonStructure([
+            'status',
+            'user' => [
+                'id',
+                'name',
+                'email',
+                'email_verified_at',
+                'created_at',
+                'updated_at',
+            ]
         ]);
     }
 }
