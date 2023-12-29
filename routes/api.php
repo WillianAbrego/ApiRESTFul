@@ -30,3 +30,5 @@ Route::post('user/create', [UserController::class, 'create']);
 Route::post('user/show', [UserController::class, 'show']);
 
 Route::put('user/update', [UserController::class, 'update']);
+
+Route::delete('user/delete', [UserController::class, 'delete']);

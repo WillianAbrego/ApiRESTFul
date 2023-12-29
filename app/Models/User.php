@@ -57,4 +57,9 @@ class User extends Authenticatable
 
         return $this;
     }
+    public function deleteModel()
+    {
+        // lo que sea necesario antes de eliminar el usuario
+        return $this->delete();
+    }
 }

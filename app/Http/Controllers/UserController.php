@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\CreateRequest;
+use App\Http\Requests\User\DeleteRequest;
 use App\Http\Requests\User\IndexRequest;
 use App\Http\Requests\User\ShowRequest;
 use App\Http\Requests\User\UpdateRequest;
@@ -42,5 +43,18 @@ class UserController extends Controller
         $user = User::findOrFail($request->user_id);
         $user = $user->updateModel($request);
         return new UserResource($user);
+    }
+
+    public function delete(DeleteRequest $request)
+    {
+        $user = User::findOrFail($request->user_id);
+        //$user->delete();
+
+        $status = $user->deleteModel();
+
+        return response()->json([
+            'status' => $status,
+            'user' => $user
+        ]);
     }
 }
