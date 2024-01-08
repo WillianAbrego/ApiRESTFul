@@ -53,3 +53,58 @@ Reiniciar la base de datos de la aplicación Laravel
 php artisan migrate:fresh --seed
 ```
 
+## Instrucciones para Pruebas
+Abrir postman para poder realizar las pruebas de los endpoint, ingresar a http://127.0.0.1:8000/api/login e ingresar las credenciales que se crearon cuando ejecuto la migracion.
+
+- email => test@test.com
+- password => password
+
+|![login](assets/login.png) |
+|---|
+
+Se le presentara un token en la respuesta, dicho token sera de utilidad para poder interactuar con el sistema.
+
+***
+# Creación de un usuario
+ ```bash
+  POST /api/create
+ ```
+
+ Es necesario ir a la pestaña de Authorization y colocar el token que anteriormente fue creado, el resultado que tendra sera un json con los datos que fueron ingresados.
+
+|![Create](assets/Create.png) |![Auth](assets/Auth.png)|
+|---|---|
+
+# Listar usuarios
+Muestra los usuarios ingresados
+```bash
+GET /api/user/index
+```
+|Ingreso|Salida|
+|---|---|
+|![index](assets/index.png)|![salida](assets/indexsalida.png)|
+
+# Edicion de usuario
+
+```bash
+PUT /api/user/update
+```
+
+Es necesario agregar el id del usuario que se quiere editar junto a los parametros que quiere modificar
+
+|Ingreso|Salida|
+|---|---|
+|![edit](assets/Edit.png)|![salida](assets/Editsalida.png)|
+
+# Eliminacion de usuario
+
+```bash
+DELETE /api/user/delete
+```
+
+Es necesario agregar el id del usuario que se quiere eliminar, y luego listar los usarios para comprobar que la eliminacion sea correcta
+
+|Ingreso|Salida|Revision|
+|---|---|---|
+|![edit](assets/delete.png)|![salida](assets/deleteresultado.png)| ![Revision](assets/revision.png)|
+
